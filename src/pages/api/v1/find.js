@@ -1,14 +1,14 @@
 import Fuse from "fuse.js";
-import functionData from "../data/functions.json";
+import functionData from "./data/functions.json";
 
-export default async function handler(req, res) {
+export default async function find(req, res) {
   if (req.method !== "GET") {
-    return res.status(405).json({ status: 405, error: "Method not allowed" });
+    return res.status(405).json({ status: "405", error: "Method not allowed" });
   }
 
   const { name, list = 5 } = req.query;
   if (!name) {
-    return res.status(400).json({ status: 400, error: "Name parameter is required" });
+    return res.status(400).json({ status: "400", error: "Name parameter is required" });
   }
 
   const fuseOptions = {
@@ -30,16 +30,6 @@ export default async function handler(req, res) {
       return result.item.function;
     });
 
-
-  const data = {
-    endpoint: "/find",
-    status: 200,
-    params: {
-      name,
-      list,
-    },
-  }
-
   res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify({ data, functions: parsedFunctions }, null , 2));
+  res.end(JSON.stringify({ endpoint: "/find", status: 200, functions: parsedFunctions }, null , 2));
 }
