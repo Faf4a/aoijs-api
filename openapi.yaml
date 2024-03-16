@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: Aoi.js Functions API
+  description: Returns functions information based on the [docs](https://aoi.js.org/)
+  version: 0.1.0
+servers:
+  - url: http://aoijs-api.vercel.app
+    description: Production Server
+paths:
+  /functions:
+    get:
+      summary: Returns functions.
+      description: Returns functions data in JSON.
+      responses:
+        '200':
+          description: A JSON array of function data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    function:
+                      type: string
+                    description:
+                      type: string
+                    usage:
+                      type: string
+                    example:
+                      type: string
+                    table:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          path:
+                            type: string
+                          text:
+                            type: string
+                          encoding:
+                            type: string
+                    package:
+                      type: string
+                    documentation:
+                      type: string
+                    source-code:
+                      type: string
+  /find:
+    get:
+      summary: Returns a list of functions based on the search query.
+      parameters:
+        - in: query
+          name: name
+          required: true
+          schema:
+            type: string
+          description: The name of the function to search for.
+        - in: query
+          name: list
+          schema:
+            type: integer
+          description: The number of results to return. Defaults to 5.
+      responses:
+        '200':
+          description: A JSON array of function names
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  functions:
+                    type: array
+                    items:
+                      type: string
