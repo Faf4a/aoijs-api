@@ -7,8 +7,7 @@ export default async function handler(req, res) {
 
     const { question } = req.body;
 
-    const { default: fetch } = await import("node-fetch");
-    const BARD_URL = "https://bard.google.com/_/BardChatUi/data/assistant.lamda.BardFrontendService/StreamGenerate";
+    const BARD_URL = process.env.BARD_URL;
     const SECURE1PSID = process.env.PSID;
     const AT_KEY = process.env.AT_KEY;
 
