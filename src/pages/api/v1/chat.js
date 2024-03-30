@@ -49,6 +49,6 @@ export default async function handler(req, res) {
 
         res.json({ result: content });
     } catch (error) {
-        res.status(500).json({ error: "An unknown server error occurred" });
+        res.status(500).json({ error });
     }
 }
