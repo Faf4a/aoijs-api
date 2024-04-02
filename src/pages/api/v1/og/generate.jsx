@@ -4,8 +4,8 @@ export const config = {
     runtime: "experimental-edge"
 };
 
-const font = fetch(new URL("../../assets/Poppins-Regular.ttf", import.meta.url)).then((res) => res.arrayBuffer());
-const fontbold = fetch(new URL("../../assets/Poppins-SemiBold.ttf", import.meta.url)).then((res) => res.arrayBuffer());
+const font = fetch(new URL("../../../assets/Poppins-Regular.ttf", import.meta.url)).then((res) => res.arrayBuffer());
+const fontbold = fetch(new URL("../../../assets/Poppins-SemiBold.ttf", import.meta.url)).then((res) => res.arrayBuffer());
 
 const calculateFontSize = (description) => {
     const baseSize = 32;
