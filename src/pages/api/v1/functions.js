@@ -1,11 +1,45 @@
 import Fuse from "fuse.js";
-import functionData from "./data/functions.json";
+import functionData from "../../assets/data/functions.json";
 
+/**
+ * @swagger
+ * /api/v1/functions:
+ *   get:
+ *     summary: Search for a specific function by name
+ *     parameters:
+ *       - in: query
+ *         name: name
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The name of the function to search for
+ *     responses:
+ *       200:
+ *         description: The matching function
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 endpoint:
+ *                   type: string
+ *                 status:
+ *                   type: integer
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     function:
+ *                       type: string
+ *                     description:
+ *                       type: string
+ *                     example:
+ *                       type: string
+ *       400:
+ *         description: Bad request, name parameter is required
+ *       404:
+ *         description: Function not found
+ */
 export default async function functions(req, res) {
-    if (req.method !== "GET") {
-        return res.status(405).json({ status: "405", error: "Method not allowed" });
-    }
-
     const { name } = req.query;
     if (!name) {
         return res.status(400).json({ status: "400", error: "Name parameter is required" });
