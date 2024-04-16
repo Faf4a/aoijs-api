@@ -67,10 +67,3 @@ jobs:
           echo "New preview URL: $url"
           echo "META_TAG=$META_TAG"
           echo "VERCEL_URL=$url" >> "$GITHUB_OUTPUT"
-
-      - uses: mshick/add-pr-comment@v2
-        with:
-          message: |
-            Your build has completed!
-
-            [Preview deployment](${{ steps.vercel.outputs.VERCEL_URL }})
