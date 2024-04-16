@@ -8,7 +8,7 @@ import functionData from "../../assets/data/functions.json";
  *        none
  *     responses:
  *       200:
- *         description: All fuunctions were sent
+ *         description: All functions were sent
  *         content:
  *           application/json:
  *             schema:
@@ -19,14 +19,7 @@ import functionData from "../../assets/data/functions.json";
  *                 status:
  *                   type: integer
  *                 data:
- *                   type: object
- *                   properties:
- *                     function:
- *                       type: string
- *                     description:
- *                       type: string
- *                     example:
- *                       type: string
+ *                   type: array
  */
 
 export default async function functionlist(req, res) {
@@ -35,7 +28,7 @@ export default async function functionlist(req, res) {
     	arr[i]= "$" + functionData[i].function;
     }
     
-    const json = JSON.stringify({ endpoint: "/functionlist", status: 200, data: {arr} }, null, 2);
+    const json = JSON.stringify({ endpoint: "/functionlist", status: 200, data: [...arr] }, null, 2);
     res.setHeader("Content-Type", "application/json");
     res.end(json);
 }
