@@ -103,3 +103,32 @@ GET /find?name=get&list=3
   ]
 }
 ```
+
+### `/functionlist`
+
+**Method:** `GET`
+
+**Description:** This endpoint returns all function names.
+
+**Example Request:**
+
+```
+GET /functionlist
+```
+
+**Example Response:**
+
+```json
+{
+  "endpoint": "/functionlist",
+  "status": 200,
+  "functions": [
+    "get",
+    "getCurrentTrackDuration",
+    "getFilters",
+    "getAutomodRuleId",
+    "getGuildAutomodNames",
+    ...
+  ]
+}
+```
