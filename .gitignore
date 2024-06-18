@@ -8,6 +8,8 @@
 
 # testing
 /coverage
+/generate_docs
+/index.test.js
 
 # next.js
 /.next/

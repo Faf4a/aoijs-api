@@ -2,7 +2,7 @@
   {
     "function": "$addColorStop",
     "description": "Add a color stop to gradient.",
-    "usage": "",
+    "usage": "$addColorStop[canvas;gradient;offset;color]",
     "example": "",
     "table": [
       {
@@ -32,13 +32,13 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/addcolorstop",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/addcolorstop.ts"
   },
   {
     "function": "$attachCanvas",
     "description": "Attaches canvas.",
-    "usage": "",
-    "example": "### This will create new 300x320 canvas with house and add an attachment house.png.\n\n```\n$attachCanvas[mycanvas;house.png]\n$drawLines[mycanvas;draw;#03a9f4;10;50;140;150:60;250:140]\n$fillRect[mycanvas;#03a9f4;130;190;40;60]\n$strokeRect[mycanvas;#03a9f4;75;140;150;110]\n$createCanvas[mycanvas;300;320]\n```\n\n![Preview](../../../../../../images/showcases/house-custom-name.png)\n\n### This will create new 300x320 canvas with house and add an attachment with name of your canvas. (mycanvas.png)\n\n```\n$attachCanvas[mycanvas]\n$drawLines[mycanvas;draw;#03a9f4;10;50;140;150:60;250:140]\n$fillRect[mycanvas;#03a9f4;130;190;40;60]\n$strokeRect[mycanvas;#03a9f4;75;140;150;110]\n$createCanvas[mycanvas;300;320]\n```\n\n![Preview](../../../../../../images/showcases/house-canvas-name.png)",
+    "usage": "$attachCanvas[canvas;name?]",
+    "example": "### This will create new 300x320 canvas with house and add an attachment house.png.\n\n```javascript\n$attachCanvas[mycanvas;house.png]\n$drawLines[mycanvas;draw;#03a9f4;10;50;140;150:60;250:140]\n$fillRect[mycanvas;#03a9f4;130;190;40;60]\n$strokeRect[mycanvas;#03a9f4;75;140;150;110]\n$createCanvas[mycanvas;300;320]\n```\n\n### This will create new 300x320 canvas with house and add an attachment with name of your canvas. (mycanvas.png)\n\n```javascript\n$attachCanvas[mycanvas]\n$drawLines[mycanvas;draw;#03a9f4;10;50;140;150:60;250:140]\n$fillRect[mycanvas;#03a9f4;130;190;40;60]\n$strokeRect[mycanvas;#03a9f4;75;140;150;110]\n$createCanvas[mycanvas;300;320]\n```",
     "table": [
       {
         "field": "canvas",
@@ -55,13 +55,13 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/attachcanvas",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/attachcanvas.ts"
   },
   {
     "function": "$canvasSize",
     "description": "Returns canvas size.",
-    "usage": "",
-    "example": "### This will create a redsquare canvas and then send it with the old and after trimming size.\n\n```\n$attachCanvas[redsquare;ball.png]\nNew: $canvasSize[redsquare;width]x$canvasSize[redsquare;height] $canvasTrim[redsquare]$fillRect[redsquare;#FF0000;50;50;150;150]\nOld: $canvasSize[redsquare;width]x$canvasSize[redsquare;height]\n$createCanvas[redsquare;250;250]\n```\n\n![Preview](../../../../../../images/showcases/trim-only.png)",
+    "usage": "$canvasSize[canvas;property]",
+    "example": "### This will create a redsquare canvas and then send it with the old and after trimming size.\n\n```javascript\n$attachCanvas[redsquare;ball.png]\nNew: $canvasSize[redsquare;width]x$canvasSize[redsquare;height] $canvasTrim[redsquare]$fillRect[redsquare;#FF0000;50;50;150;150]\nOld: $canvasSize[redsquare;width]x$canvasSize[redsquare;height]\n$createCanvas[redsquare;250;250]\n```",
     "table": [
       {
         "field": "canvas",
@@ -78,13 +78,13 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/canvassize",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/canvassize.ts"
   },
   {
     "function": "$canvasTrim",
     "description": "Trims the canvas.",
-    "usage": "",
-    "example": "### This will draw a red square and then trim the canvas\n\n```\n$attachCanvas[redsquare;ball.png]\nNew: $canvasSize[redsquare;width]x$canvasSize[redsquare;height] $canvasTrim[redsquare]$fillRect[redsquare;#FF0000;50;50;150;150]\nOld: $canvasSize[redsquare;width]x$canvasSize[redsquare;height]\n$createCanvas[redsquare;250;250]\n```\n\n![Preview](../../../../../../images/showcases/trim.png)",
+    "usage": "$canvasTrim[canvas]",
+    "example": "### This will draw a red square and then trim the canvas\n\n```javascript\n$attachCanvas[redsquare;ball.png]\nNew: $canvasSize[redsquare;width]x$canvasSize[redsquare;height] $canvasTrim[redsquare]$fillRect[redsquare;#FF0000;50;50;150;150]\nOld: $canvasSize[redsquare;width]x$canvasSize[redsquare;height]\n$createCanvas[redsquare;250;250]\n```",
     "table": [
       {
         "field": "canvas",
@@ -95,12 +95,12 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/canvastrim",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/canvastrim.ts"
   },
   {
     "function": "$clearRect",
     "description": "Erases pixels in a rect area.",
-    "usage": "",
+    "usage": "$clearRect[canvas;x;y;width;height;radius?]",
     "example": "",
     "table": [
       {
@@ -142,12 +142,12 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/clearrect",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/clearrect.ts"
   },
   {
     "function": "$createCanvas",
     "description": "Creates a new canvas.",
-    "usage": "",
+    "usage": "$createCanvas[canvas;width?;height?]",
     "example": "",
     "table": [
       {
@@ -171,12 +171,12 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/createcanvas",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/createcanvas.ts"
   },
   {
     "function": "$createGradient",
     "description": "Creates a gradient.",
-    "usage": "",
+    "usage": "$createGradient[canvas;gradient;type;...options]",
     "example": "",
     "table": [
       {
@@ -206,13 +206,13 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/creategradient",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/creategradient.ts"
   },
   {
     "function": "$downloadCanvas",
     "description": "Downloads the canvas.",
-    "usage": "",
-    "example": "### This will create a house canvas and then download it into a directory.\n\n```\n$downloadCanvas[mycanvas;./some-canvas-folder/uwu.png]\n$drawLines[mycanvas;draw;#03a9f4;10;50;140;150:60;250:140]\n$fillRect[mycanvas;#03a9f4;130;190;40;60]\n$strokeRect[mycanvas;#03a9f4;75;140;150;110]\n$createCanvas[mycanvas;300;320]\n```\n\n![Preview](../../../../../../images/showcases/download-house.png)",
+    "usage": "$downloadCanvas[canvas;path]",
+    "example": "### This will create a house canvas and then download it into a directory.\n\n```javascript\n$downloadCanvas[mycanvas;./some-canvas-folder/uwu.png]\n$drawLines[mycanvas;draw;#03a9f4;10;50;140;150:60;250:140]\n$fillRect[mycanvas;#03a9f4;130;190;40;60]\n$strokeRect[mycanvas;#03a9f4;75;140;150;110]\n$createCanvas[mycanvas;300;320]\n```",
     "table": [
       {
         "field": "canvas",
@@ -229,13 +229,13 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/downloadcanvas",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/downloadcanvas.ts"
   },
   {
     "function": "$drawImage",
     "description": "Draw an image.",
-    "usage": "",
-    "example": "### This will create a canvas with your avatar.\n\n```\n$attachCanvas[avatar]\n$drawImage[avatar;$nonEscape[$authorAvatar];0;0;1024;1024]\n$createCanvas[avatar;1024;1024]\n```\n\n![Preview](../../../../../../images/showcases/avatar.png)",
+    "usage": "$drawImage[canvas;src;x;y;width;height;radius?]",
+    "example": "### This will create a canvas with your avatar.\n\n```javascript\n$attachCanvas[avatar]\n$drawImage[avatar;$nonEscape[$authorAvatar];0;0;1024;1024]\n$createCanvas[avatar;1024;1024]\n```",
     "table": [
       {
         "field": "canvas",
@@ -282,23 +282,23 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/drawimage",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/drawimage.ts"
   },
   {
     "function": "$drawLines",
     "description": "Draws lines.",
-    "usage": "",
-    "example": "### This will create new 300x320 canvas with house and add an attachment house.png.\n\n```\n$attachCanvas[mycanvas;house.png]\n$drawLines[mycanvas;draw;#03a9f4;10;50;140;150:60;250:140]\n$fillRect[mycanvas;#03a9f4;130;190;40;60]\n$strokeRect[mycanvas;#03a9f4;75;140;150;110]\n$createCanvas[mycanvas;300;320]\n```\n\n![Preview](../../../../../../images/showcases/house-custom-name.png)\n\n### This will create new 150x150 canvas with name heart and draw heart on it using bezier curve/lines\n\n```\n$attachCanvas[heart]\n$drawLines[heart;0;#FF0000;10;75;40;\nbezier: 75: 37: 70: 25: 50: 25;\nbezier: 20: 25: 20: 62.5: 20: 62.5;\nbezier: 20: 80: 40: 102: 75: 120;\nbezier: 110: 102: 130: 80: 130: 62.5;\nbezier: 130: 62.5: 130: 25: 100 : 25;\nbezier: 85: 25: 75: 37: 75: 40]\n$createCanvas[heart;150;150]\n```\n\n![Preview](../../../../../../images/showcases/heart.png)",
+    "usage": "$drawLines[canvas;type;color;strokeWidth?;x?;y?;...lines]",
+    "example": "### This will create new 300x320 canvas with house and add an attachment house.png.\n\n```javascript\n$attachCanvas[mycanvas;house.png]\n$drawLines[mycanvas;draw;#03a9f4;10;50;140;150:60;250:140]\n$fillRect[mycanvas;#03a9f4;130;190;40;60]\n$strokeRect[mycanvas;#03a9f4;75;140;150;110]\n$createCanvas[mycanvas;300;320]\n```\n\n### This will create new 150x150 canvas with name heart and draw heart on it using bezier curve/lines\n\n```javascript\n$attachCanvas[heart]\n$drawLines[heart;0;#FF0000;10;75;40;\nbezier: 75: 37: 70: 25: 50: 25;\nbezier: 20: 25: 20: 62.5: 20: 62.5;\nbezier: 20: 80: 40: 102: 75: 120;\nbezier: 110: 102: 130: 80: 130: 62.5;\nbezier: 130: 62.5: 130: 25: 100 : 25;\nbezier: 85: 25: 75: 37: 75: 40]\n$createCanvas[heart;150;150]\n```",
     "table": [],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/drawlines",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/drawlines.ts"
   },
   {
     "function": "$fillRect",
     "description": "Draws a new rect.",
-    "usage": "",
-    "example": "### This will draw a 250x250 red square\n\n```\n$attachCanvas[redsquare;ball.png]\n$fillRect[redsquare;#FF0000;0;0;250;250]\n$createCanvas[redsquare;250;250]\n```\n\n![Preview](../../../../../../images/showcases/redsquare.png)\n\n### This will draw a 250x250 red circle\n\n```\n$attachCanvas[redball;ball.png]\n$fillRect[redball;#FF0000;0;0;250;250;125]\n$createCanvas[redball;250;250]\n```\n\n![Preview](../../../../../../images/showcases/redball.png)",
+    "usage": "$fillRect[canvas;style;x?;y?;width?;height?;radius?]",
+    "example": "### This will draw a 250x250 red square\n\n```javascript\n$attachCanvas[redsquare;ball.png]\n$fillRect[redsquare;#FF0000;0;0;250;250]\n$createCanvas[redsquare;250;250]\n```\n\n### This will draw a 250x250 red circle\n\n```javascript\n$attachCanvas[redball;ball.png]\n$fillRect[redball;#FF0000;0;0;250;250;125]\n$createCanvas[redball;250;250]\n```",
     "table": [
       {
         "field": "canvas",
@@ -345,12 +345,12 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/fillrect",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/fillrect.ts"
   },
   {
     "function": "$fillText",
     "description": "Draw text.",
-    "usage": "",
+    "usage": "$fillText[canvas;text;style?;font;x;y;maxWidth?;align?;baseline?]",
     "example": "",
     "table": [
       {
@@ -410,13 +410,13 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/filltext",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/filltext.ts"
   },
   {
     "function": "$filter",
     "description": "Use filters in your canvas.",
-    "usage": "",
-    "example": "Soon ™",
+    "usage": "$filter[canvas;method;name?;value?]",
+    "example": "",
     "table": [
       {
         "field": "canvas",
@@ -445,13 +445,13 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/filter",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/filter.ts"
   },
   {
     "function": "$fontFamilies",
     "description": "Returns all font families you can use.",
-    "usage": "",
-    "example": "### This will send all font families.\n\n```\n$fontFamilies\n```\n\n![Preview](../../../../../../images/showcases/fontfamilies.png)",
+    "usage": "$fontFamilies[separator?]",
+    "example": "### This will send all font families.\n\n```javascript\n$fontFamilies\n```",
     "table": [
       {
         "field": "separator",
@@ -462,12 +462,12 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/fontfamilies",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/fontfamilies.ts"
   },
   {
     "function": "$measureText",
     "description": "Measure some text.",
-    "usage": "",
+    "usage": "$measureText[canvas;text;font?;property?]",
     "example": "",
     "table": [
       {
@@ -497,12 +497,12 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/measuretext",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/measuretext.ts"
   },
   {
     "function": "$registerFont",
     "description": "Register a font.",
-    "usage": "",
+    "usage": "$registerFont[src;name?]",
     "example": "",
     "table": [
       {
@@ -520,12 +520,12 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/registerfont",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/registerfont.ts"
   },
   {
     "function": "$rotation",
     "description": "Sets canvas rotation.",
-    "usage": "",
+    "usage": "$rotation[canvas;angle]",
     "example": "",
     "table": [
       {
@@ -543,12 +543,12 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/rotation",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/rotation.ts"
   },
   {
     "function": "$setShadow",
     "description": "Sets shadow in a canvas.",
-    "usage": "",
+    "usage": "$setShadow[canvas;blur;color;offset?]",
     "example": "",
     "table": [
       {
@@ -578,12 +578,12 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/setshadow",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/setshadow.ts"
   },
   {
     "function": "$strokeRect",
     "description": "Draws a new stroke rect.",
-    "usage": "",
+    "usage": "$strokeRect[canvas;color;x?;y?;width?;height?;strokeWidth?;radius?]",
     "example": "",
     "table": [
       {
@@ -637,12 +637,12 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/strokerect",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/strokerect.ts"
   },
   {
     "function": "$strokeText",
     "description": "Draw stroke text.",
-    "usage": "",
+    "usage": "$strokeText[canvas;text;color?;font?;x;y;strokeWidth?;maxWidth?;align?;baseline?]",
     "example": "",
     "table": [
       {
@@ -708,12 +708,12 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/stroketext",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/stroketext.ts"
   },
   {
     "function": "$translate",
     "description": "Adds a translation transformation.",
-    "usage": "",
+    "usage": "$translate[canvas;x?;y?]",
     "example": "",
     "table": [
       {
@@ -737,7 +737,7 @@
     ],
     "package": "aoi.canvas",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoicanvas/functions/translate",
-    "source-code": "https://github.com/aoijs/aoi.canvas"
+    "source-code": "https://github.com/aoijs/aoi.canvas/tree/v2/src/functions/translate.ts"
   },
   {
     "function": "$abbreviate",
@@ -2765,23 +2765,6 @@
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/channelLastPinTimestamp.js"
   },
   {
-    "function": "$channelNSFW",
-    "description": "$channelNSFW will return true or false depending if the given channel is marked as NSFW or not.",
-    "usage": "$channelNSFW[channelID?]",
-    "example": "This will return either `true` or `false` depending on if the channel where you execute the command is marked as NSFW or not:\n\n```javascript\nclient.command({\n    name: \"channelNSFW\",\n    code: `\n  $channelNSFW[$channelID]\n  `\n});\n```",
-    "table": [
-      {
-        "field": "channelID?",
-        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
-        "description": "ID of the channel you want to check if its marked as NSFW or not.",
-        "required": "false"
-      }
-    ],
-    "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/channelnsfw",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/channelNSFW.js"
-  },
-  {
     "function": "$channelName",
     "description": "$channelName will return the channel name of the given channel.",
     "usage": "$channelName[channelID?]",
@@ -2797,6 +2780,23 @@
     "package": "aoi.js",
     "documentation": "https://aoi.js.org/docs/functions/channelname",
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/channelName.js"
+  },
+  {
+    "function": "$channelNSFW",
+    "description": "$channelNSFW will return true or false depending if the given channel is marked as NSFW or not.",
+    "usage": "$channelNSFW[channelID?]",
+    "example": "This will return either `true` or `false` depending on if the channel where you execute the command is marked as NSFW or not:\n\n```javascript\nclient.command({\n    name: \"channelNSFW\",\n    code: `\n  $channelNSFW[$channelID]\n  `\n});\n```",
+    "table": [
+      {
+        "field": "channelID?",
+        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
+        "description": "ID of the channel you want to check if its marked as NSFW or not.",
+        "required": "false"
+      }
+    ],
+    "package": "aoi.js",
+    "documentation": "https://aoi.js.org/docs/functions/channelnsfw",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/channelNSFW.js"
   },
   {
     "function": "$channelOverwrites",
@@ -5296,6 +5296,16 @@
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/emojiName.js"
   },
   {
+    "function": "$emojisFromMessage",
+    "description": "$emojisFromMessage will retrieve all emojis given in a message.",
+    "usage": "$emojisFromMessage",
+    "example": "This will return any emojis you give as argument:\n\n```javascript\nclient.command({\n    name: \"emojisFromMessage\",\n    code: `\n$emojisFromMessage\n  `\n});\n```",
+    "table": [],
+    "package": "aoi.js",
+    "documentation": "https://aoi.js.org/docs/functions/emojisfrommessage",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/emojisFromMessage.js"
+  },
+  {
     "function": "$emojiURL",
     "description": "$emojiURL will return the emoji URL of an emoji.",
     "usage": "$emojiURL[emojiResolver]",
@@ -5313,14 +5323,24 @@
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/emojiURL.js"
   },
   {
-    "function": "$emojisFromMessage",
-    "description": "$emojisFromMessage will retrieve all emojis given in a message.",
-    "usage": "$emojisFromMessage",
-    "example": "This will return any emojis you give as argument:\n\n```javascript\nclient.command({\n    name: \"emojisFromMessage\",\n    code: `\n$emojisFromMessage\n  `\n});\n```",
+    "function": "$endelseif",
+    "description": "$endelseif is used to end an elseif statement.",
+    "usage": "$endelseif",
+    "example": "Example usage of `$if: old` (will return \"Hello\" when the condition is true):\n\n```javascript\nclient.command({\n    name: \"if\",\n    $if: \"old\",\n    code: `\n  $if[1==2]\n  Hello!\n  $elseif[2==4]\n  $endelseif\n  $endif\n  `\n});\n```",
     "table": [],
     "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/emojisfrommessage",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/emojisFromMessage.js"
+    "documentation": "https://aoi.js.org/docs/functions/endelseif",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/endelseif.js"
+  },
+  {
+    "function": "$endif",
+    "description": "$endif is used to end an if statement.",
+    "usage": "$endif",
+    "example": "Example usage of `$if: old` (will return \"Hello\" when the condition is true):\n\n```javascript\nclient.command({\n    name: \"endif\",\n    $if: \"old\",\n    code: `\n  $if[1==1]\n  Hello!\n  $endif\n  `\n});\n```",
+    "table": [],
+    "package": "aoi.js",
+    "documentation": "https://aoi.js.org/docs/functions/endif",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/endif.js"
   },
   {
     "function": "$endPoll",
@@ -5344,26 +5364,6 @@
     "package": "aoi.js",
     "documentation": "https://aoi.js.org/docs/functions/endpoll",
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/endPoll.js"
-  },
-  {
-    "function": "$endelseif",
-    "description": "$endelseif is used to end an elseif statement.",
-    "usage": "$endelseif",
-    "example": "Example usage of `$if: old` (will return \"Hello\" when the condition is true):\n\n```javascript\nclient.command({\n    name: \"if\",\n    $if: \"old\",\n    code: `\n  $if[1==2]\n  Hello!\n  $elseif[2==4]\n  $endelseif\n  $endif\n  `\n});\n```",
-    "table": [],
-    "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/endelseif",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/endelseif.js"
-  },
-  {
-    "function": "$endif",
-    "description": "$endif is used to end an if statement.",
-    "usage": "$endif",
-    "example": "Example usage of `$if: old` (will return \"Hello\" when the condition is true):\n\n```javascript\nclient.command({\n    name: \"endif\",\n    $if: \"old\",\n    code: `\n  $if[1==1]\n  Hello!\n  $endif\n  `\n});\n```",
-    "table": [],
-    "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/endif",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/endif.js"
   },
   {
     "function": "$error",
@@ -7883,40 +7883,6 @@
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/guildFeatures.js"
   },
   {
-    "function": "$guildID",
-    "description": "$guildID will return the guild ID of a given guild.",
-    "usage": "$guildID[name?]",
-    "example": "This will return your guild ID:\n\n```javascript\nclient.command({\n    name: \"guildID\",\n    code: `\n  $guildID\n  `\n});\n```",
-    "table": [
-      {
-        "field": "name?",
-        "type": "[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)",
-        "description": "The guild name you want the ID to be returned of.",
-        "required": "false"
-      }
-    ],
-    "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/guildid",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/guildID.js"
-  },
-  {
-    "function": "$guildIDS",
-    "description": "$guildIDS will return the ID of every guild your bot is in.",
-    "usage": "$guildIDS[sep?]",
-    "example": "This will return all guild IDs your bot is in:\n\n```javascript\nclient.command({\n    name: \"guildIDS\",\n    code: `\n  $guildIDS[, ]\n  `\n});\n```",
-    "table": [
-      {
-        "field": "sep?",
-        "type": "[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)",
-        "description": "The separator to separate multiple returned values.",
-        "required": "false"
-      }
-    ],
-    "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/guildids",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/guildIDS.js"
-  },
-  {
     "function": "$guildIcon",
     "description": "$guildIcon will return the guild's icon.",
     "usage": "$guildIcon[guildID?;size?;dynamic?;extension?]",
@@ -7950,6 +7916,40 @@
     "package": "aoi.js",
     "documentation": "https://aoi.js.org/docs/functions/guildicon",
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/guildIcon.js"
+  },
+  {
+    "function": "$guildID",
+    "description": "$guildID will return the guild ID of a given guild.",
+    "usage": "$guildID[name?]",
+    "example": "This will return your guild ID:\n\n```javascript\nclient.command({\n    name: \"guildID\",\n    code: `\n  $guildID\n  `\n});\n```",
+    "table": [
+      {
+        "field": "name?",
+        "type": "[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)",
+        "description": "The guild name you want the ID to be returned of.",
+        "required": "false"
+      }
+    ],
+    "package": "aoi.js",
+    "documentation": "https://aoi.js.org/docs/functions/guildid",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/guildID.js"
+  },
+  {
+    "function": "$guildIDS",
+    "description": "$guildIDS will return the ID of every guild your bot is in.",
+    "usage": "$guildIDS[sep?]",
+    "example": "This will return all guild IDs your bot is in:\n\n```javascript\nclient.command({\n    name: \"guildIDS\",\n    code: `\n  $guildIDS[, ]\n  `\n});\n```",
+    "table": [
+      {
+        "field": "sep?",
+        "type": "[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)",
+        "description": "The separator to separate multiple returned values.",
+        "required": "false"
+      }
+    ],
+    "package": "aoi.js",
+    "documentation": "https://aoi.js.org/docs/functions/guildids",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/guildIDS.js"
   },
   {
     "function": "$guildLeaderboard",
@@ -8016,10 +8016,10 @@
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/guildLowestRole.js"
   },
   {
-    "function": "$guildMFALevel",
-    "description": "$guildMFALevel will return the guild's MFA Level.",
-    "usage": "$guildMFALevel[guildID?]",
-    "example": "This will return the guild's MFA Level:\n\n```javascript\nclient.command({\n    name: \"guildMFALevel\",\n    code: `\n  $guildMFALevel[$guildID]\n  `\n});\n```",
+    "function": "$guildMaximumMembers",
+    "description": "$guildMaximumMembers will return the maximal amount of members a guild can have.",
+    "usage": "$guildMaximumMembers[guildID?]",
+    "example": "This will return the maximum of members you can have in your guild:\n\n```javascript\nclient.command({\n    name: \"guildMaximumMembers\",\n    code: `\n  You can have: $guildMaximumMembers[$guildID] Members in this guild!\n  `\n});\n```",
     "table": [
       {
         "field": "guildID?",
@@ -8029,8 +8029,8 @@
       }
     ],
     "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/guildmfalevel",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/guildMFALevel.js"
+    "documentation": "https://aoi.js.org/docs/functions/guildmaximummembers",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/guildMaximumMembers.js"
   },
   {
     "function": "$guildMaxStageVideoChannelUsers",
@@ -8067,10 +8067,10 @@
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/guildMaxVideoChannelUsers.js"
   },
   {
-    "function": "$guildMaximumMembers",
-    "description": "$guildMaximumMembers will return the maximal amount of members a guild can have.",
-    "usage": "$guildMaximumMembers[guildID?]",
-    "example": "This will return the maximum of members you can have in your guild:\n\n```javascript\nclient.command({\n    name: \"guildMaximumMembers\",\n    code: `\n  You can have: $guildMaximumMembers[$guildID] Members in this guild!\n  `\n});\n```",
+    "function": "$guildMFALevel",
+    "description": "$guildMFALevel will return the guild's MFA Level.",
+    "usage": "$guildMFALevel[guildID?]",
+    "example": "This will return the guild's MFA Level:\n\n```javascript\nclient.command({\n    name: \"guildMFALevel\",\n    code: `\n  $guildMFALevel[$guildID]\n  `\n});\n```",
     "table": [
       {
         "field": "guildID?",
@@ -8080,25 +8080,8 @@
       }
     ],
     "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/guildmaximummembers",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/guildMaximumMembers.js"
-  },
-  {
-    "function": "$guildNSFWLevel",
-    "description": "$guildNSFWLevel will return the guild's NSFW level.",
-    "usage": "$guildNSFWLevel[guildID?]",
-    "example": "This will return the guild's NSFW level:\n\n```javascript\nclient.command({\n    name: \"guildNSFWLevel\",\n    code: `\n  $guildNSFWLevel[$guildID]\n  `\n});\n```",
-    "table": [
-      {
-        "field": "guildID?",
-        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
-        "description": "The ID of the guild.",
-        "required": "true"
-      }
-    ],
-    "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/guildnsfwlevel",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/guildNSFWLevel.js"
+    "documentation": "https://aoi.js.org/docs/functions/guildmfalevel",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/guildMFALevel.js"
   },
   {
     "function": "$guildName",
@@ -8133,6 +8116,23 @@
     "package": "aoi.js",
     "documentation": "https://aoi.js.org/docs/functions/guildnames",
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/guildNames.js"
+  },
+  {
+    "function": "$guildNSFWLevel",
+    "description": "$guildNSFWLevel will return the guild's NSFW level.",
+    "usage": "$guildNSFWLevel[guildID?]",
+    "example": "This will return the guild's NSFW level:\n\n```javascript\nclient.command({\n    name: \"guildNSFWLevel\",\n    code: `\n  $guildNSFWLevel[$guildID]\n  `\n});\n```",
+    "table": [
+      {
+        "field": "guildID?",
+        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
+        "description": "The ID of the guild.",
+        "required": "true"
+      }
+    ],
+    "package": "aoi.js",
+    "documentation": "https://aoi.js.org/docs/functions/guildnsfwlevel",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/guildNSFWLevel.js"
   },
   {
     "function": "$guildOwnerID",
@@ -9361,23 +9361,6 @@
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/isCustomEmoji.js"
   },
   {
-    "function": "$isDM",
-    "description": "$isDM will check if the given channel is a DM or not.",
-    "usage": "$isDM[channelID?]",
-    "example": "This will return either `true` or `false` depending on if you're executing the command in a DM or not:\n\n```javascript\nclient.command({\n    name: \"isDM\",\n    code: `\n  $isDM[$channelID]\n  `\n});\n```",
-    "table": [
-      {
-        "field": "channelID?",
-        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
-        "description": "ID of the channel that you want to check.",
-        "required": "false"
-      }
-    ],
-    "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/isdm",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/isDM.js"
-  },
-  {
     "function": "$isDeafen",
     "description": "$isDeafen will check if a certain user is deafened or not.",
     "usage": "$isDeafen[userID?;guildID?]",
@@ -9399,6 +9382,23 @@
     "package": "aoi.js",
     "documentation": "https://aoi.js.org/docs/functions/isdeafen",
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/isDeafen.js"
+  },
+  {
+    "function": "$isDM",
+    "description": "$isDM will check if the given channel is a DM or not.",
+    "usage": "$isDM[channelID?]",
+    "example": "This will return either `true` or `false` depending on if you're executing the command in a DM or not:\n\n```javascript\nclient.command({\n    name: \"isDM\",\n    code: `\n  $isDM[$channelID]\n  `\n});\n```",
+    "table": [
+      {
+        "field": "channelID?",
+        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
+        "description": "ID of the channel that you want to check.",
+        "required": "false"
+      }
+    ],
+    "package": "aoi.js",
+    "documentation": "https://aoi.js.org/docs/functions/isdm",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/isDM.js"
   },
   {
     "function": "$isEveryoneMentioned",
@@ -10558,23 +10558,6 @@
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/membersCount.js"
   },
   {
-    "function": "$mentionType",
-    "description": "$mentionType will return the type of the mention.",
-    "usage": "$mentionType[content]",
-    "example": "This will return `users` as you're an user:\n\n```javascript\nclient.command({\n    name: \"mentionType\",\n    code: `\n  $mentionType[<@$authorID>]\n  `\n});\n```",
-    "table": [
-      {
-        "field": "content",
-        "type": "[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)",
-        "description": "The mention whose mention type will be returned.",
-        "required": "true"
-      }
-    ],
-    "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/mentiontype",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/mentionType.js"
-  },
-  {
     "function": "$mentioned",
     "description": "$mentioned will return the ID of an user of the mention.",
     "usage": "$mentioned[index;returnSelf?]",
@@ -10666,6 +10649,23 @@
     "package": "aoi.js",
     "documentation": "https://aoi.js.org/docs/functions/mentioneduserscount",
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/mentionedUsersCount.js"
+  },
+  {
+    "function": "$mentionType",
+    "description": "$mentionType will return the type of the mention.",
+    "usage": "$mentionType[content]",
+    "example": "This will return `users` as you're an user:\n\n```javascript\nclient.command({\n    name: \"mentionType\",\n    code: `\n  $mentionType[<@$authorID>]\n  `\n});\n```",
+    "table": [
+      {
+        "field": "content",
+        "type": "[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)",
+        "description": "The mention whose mention type will be returned.",
+        "required": "true"
+      }
+    ],
+    "package": "aoi.js",
+    "documentation": "https://aoi.js.org/docs/functions/mentiontype",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/mentionType.js"
   },
   {
     "function": "$message",
@@ -11439,6 +11439,16 @@
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/newVariable.js"
   },
   {
+    "function": "$nodeVersion",
+    "description": "$nodeVersion will return your current node.js version.",
+    "usage": "$nodeVersion",
+    "example": "This will return the current node.js version your bot is running on:\n\n```javascript\nclient.command({\n    name: \"nodeVersion\",\n    code: `\n    $nodeVersion\n    `\n});\n```",
+    "table": [],
+    "package": "aoi.js",
+    "documentation": "https://aoi.js.org/docs/functions/nodeversion",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/nodeVersion.js"
+  },
+  {
     "function": "$noEscapingMessage",
     "description": "$noEscapingMessage will return the non escaped message.",
     "usage": "$noEscapingMessage[args]",
@@ -11471,16 +11481,6 @@
     "package": "aoi.js",
     "documentation": "https://aoi.js.org/docs/functions/nomentionmessage",
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/noMentionMessage.js"
-  },
-  {
-    "function": "$nodeVersion",
-    "description": "$nodeVersion will return your current node.js version.",
-    "usage": "$nodeVersion",
-    "example": "This will return the current node.js version your bot is running on:\n\n```javascript\nclient.command({\n    name: \"nodeVersion\",\n    code: `\n    $nodeVersion\n    `\n});\n```",
-    "table": [],
-    "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/nodeversion",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/nodeVersion.js"
   },
   {
     "function": "$nonEscape",
@@ -12077,6 +12077,16 @@
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/partial.js"
   },
   {
+    "function": "$ping",
+    "description": "$ping will return the bot's latency.",
+    "usage": "$ping",
+    "example": "This will return your bot's latency in MS:\n\n```javascript\nclient.command({\n    name: \"ping\",\n    code: `\n  My ping is: $pingMS!\n  `\n});\n```",
+    "table": [],
+    "package": "aoi.js",
+    "documentation": "https://aoi.js.org/docs/functions/ping",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/ping.js"
+  },
+  {
     "function": "$pinMessage",
     "description": "$pinMessage will pin a given message.",
     "usage": "$pinMessage[messageID?;channelID?]",
@@ -12098,16 +12108,6 @@
     "package": "aoi.js",
     "documentation": "https://aoi.js.org/docs/functions/pinmessage",
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/pinMessage.js"
-  },
-  {
-    "function": "$ping",
-    "description": "$ping will return the bot's latency.",
-    "usage": "$ping",
-    "example": "This will return your bot's latency in MS:\n\n```javascript\nclient.command({\n    name: \"ping\",\n    code: `\n  My ping is: $pingMS!\n  `\n});\n```",
-    "table": [],
-    "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/ping",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/ping.js"
   },
   {
     "function": "$pinsUpdate",
@@ -14851,23 +14851,6 @@
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/thumbnail.js"
   },
   {
-    "function": "$timeZone",
-    "description": "$timeZone will change the timezone of any time function in the used command.",
-    "usage": "$timeZone[timezone]",
-    "example": "You can change the timezone using `$timezone` like the following:\n\n```javascript\nclient.command({\n    name: \"time\",\n    code: `\n    $hour:$minute:$second\n    $timeZone[America/New_York]\n    ` // returns current time of New York\n});\n```",
-    "table": [
-      {
-        "field": "timezone",
-        "type": "[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)",
-        "description": "Timezone/Locale formatting.",
-        "required": "false"
-      }
-    ],
-    "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/timezone",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/timeZone.js"
-  },
-  {
     "function": "$timeoutData",
     "description": "$timeoutData holds data for $setTimeout data parameters, this will be empty if used outside timeoutCommand codes.",
     "usage": "$timeoutData[option]",
@@ -14947,6 +14930,23 @@
     "package": "aoi.js",
     "documentation": "https://aoi.js.org/docs/functions/timeoutmember",
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/timeoutMember.js"
+  },
+  {
+    "function": "$timeZone",
+    "description": "$timeZone will change the timezone of any time function in the used command.",
+    "usage": "$timeZone[timezone]",
+    "example": "You can change the timezone using `$timezone` like the following:\n\n```javascript\nclient.command({\n    name: \"time\",\n    code: `\n    $hour:$minute:$second\n    $timeZone[America/New_York]\n    ` // returns current time of New York\n});\n```",
+    "table": [
+      {
+        "field": "timezone",
+        "type": "[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)",
+        "description": "Timezone/Locale formatting.",
+        "required": "false"
+      }
+    ],
+    "package": "aoi.js",
+    "documentation": "https://aoi.js.org/docs/functions/timezone",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/timeZone.js"
   },
   {
     "function": "$title",
@@ -15046,29 +15046,6 @@
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/truncate.js"
   },
   {
-    "function": "$unPinMessage",
-    "description": "$unPinMessage will unpin a given message.",
-    "usage": "$unPinMessage[messageID?;channelID?]",
-    "example": "This will pin the bot's message and unpin it after two seconds:\n\n```javascript\nclient.command({\n    name: \"unPinMessage\",\n    code: `\n  $unPinMessage[$get[id]]\n  $wait[2s]\n  $pinMessage[$get[id]]\n  $let[id;$sendMessage[Hello!;true]\n  ` // using $let & $get to save the message ID\n});\n```",
-    "table": [
-      {
-        "field": "messageID",
-        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
-        "description": "The ID of the message to unpin.",
-        "required": "false"
-      },
-      {
-        "field": "channelID",
-        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
-        "description": "The ID of the channel of where the message is located in.",
-        "required": "false"
-      }
-    ],
-    "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/unpinmessage",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/unPinMessage.js"
-  },
-  {
     "function": "$unban",
     "description": "$unban will unban a given user.",
     "usage": "$unban[guildID;userID;reason?]",
@@ -15125,6 +15102,29 @@
     "package": "aoi.js",
     "documentation": "https://aoi.js.org/docs/functions/unlockthread",
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/unlockThread.js"
+  },
+  {
+    "function": "$unPinMessage",
+    "description": "$unPinMessage will unpin a given message.",
+    "usage": "$unPinMessage[messageID?;channelID?]",
+    "example": "This will pin the bot's message and unpin it after two seconds:\n\n```javascript\nclient.command({\n    name: \"unPinMessage\",\n    code: `\n  $unPinMessage[$get[id]]\n  $wait[2s]\n  $pinMessage[$get[id]]\n  $let[id;$sendMessage[Hello!;true]\n  ` // using $let & $get to save the message ID\n});\n```",
+    "table": [
+      {
+        "field": "messageID",
+        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
+        "description": "The ID of the message to unpin.",
+        "required": "false"
+      },
+      {
+        "field": "channelID",
+        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
+        "description": "The ID of the channel of where the message is located in.",
+        "required": "false"
+      }
+    ],
+    "package": "aoi.js",
+    "documentation": "https://aoi.js.org/docs/functions/unpinmessage",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/unPinMessage.js"
   },
   {
     "function": "$updateCommands",
@@ -15575,6 +15575,23 @@
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/userLowestRole.js"
   },
   {
+    "function": "$username",
+    "description": "$username will return a user's username.",
+    "usage": "$username[userID?]",
+    "example": "This will return your username:\n\n```javascript\nclient.command({\n    name: \"username\",\n    code: `\n  $username[$authorID]\n  `\n});\n```",
+    "table": [
+      {
+        "field": "userID?",
+        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
+        "description": "The user ID.",
+        "required": "false"
+      }
+    ],
+    "package": "aoi.js",
+    "documentation": "https://aoi.js.org/docs/functions/username",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/username.js"
+  },
+  {
     "function": "$userNickname",
     "description": "$userNickname will return a user's nickname.",
     "usage": "$userNickname[guildID?;userID?;returnUser?]",
@@ -15778,63 +15795,6 @@
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/userRolesCount.js"
   },
   {
-    "function": "$userStatus",
-    "description": "$userStatus will return a user's presence.",
-    "usage": "$userStatus[guildId?;userId?]",
-    "example": "This will either return `idle` `online` `invisible` or `dnd` depending on your current presence:\n\n```javascript\nclient.command({\n    name: \"userStatus\",\n    code: `\n  $userStatus[$guildID;$authorID]\n  `\n});\n```",
-    "table": [
-      {
-        "field": "guildId?",
-        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
-        "description": "The guild ID of which guild you want to retrieve the status of.",
-        "required": "false"
-      },
-      {
-        "field": "userId?",
-        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
-        "description": "The ID of the user you want to return the status of.",
-        "required": "false"
-      }
-    ],
-    "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/userstatus",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/userStatus.js"
-  },
-  {
-    "function": "$userTag",
-    "description": "$userTag will return a user's username and discriminator.",
-    "usage": "$userTag[userID?]",
-    "example": "This will return your username and discriminator:\n\n```javascript\nclient.command({\n    name: \"userTag\",\n    code: `\n  $userTag[$authorID]\n  `\n});\n```",
-    "table": [
-      {
-        "field": "userID?",
-        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
-        "description": "The user ID.",
-        "required": "false"
-      }
-    ],
-    "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/usertag",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/userTag.js"
-  },
-  {
-    "function": "$username",
-    "description": "$username will return a user's username.",
-    "usage": "$username[userID?]",
-    "example": "This will return your username:\n\n```javascript\nclient.command({\n    name: \"username\",\n    code: `\n  $username[$authorID]\n  `\n});\n```",
-    "table": [
-      {
-        "field": "userID?",
-        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
-        "description": "The user ID.",
-        "required": "false"
-      }
-    ],
-    "package": "aoi.js",
-    "documentation": "https://aoi.js.org/docs/functions/username",
-    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/username.js"
-  },
-  {
     "function": "$usersBanned",
     "description": "$usersBanned will return the banned users of a guild.",
     "usage": "$usersBanned[guildID?;force?;option?;sep?]",
@@ -15899,6 +15859,29 @@
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/usersInChannel.js"
   },
   {
+    "function": "$userStatus",
+    "description": "$userStatus will return a user's presence.",
+    "usage": "$userStatus[guildId?;userId?]",
+    "example": "This will either return `idle` `online` `invisible` or `dnd` depending on your current presence:\n\n```javascript\nclient.command({\n    name: \"userStatus\",\n    code: `\n  $userStatus[$guildID;$authorID]\n  `\n});\n```",
+    "table": [
+      {
+        "field": "guildId?",
+        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
+        "description": "The guild ID of which guild you want to retrieve the status of.",
+        "required": "false"
+      },
+      {
+        "field": "userId?",
+        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
+        "description": "The ID of the user you want to return the status of.",
+        "required": "false"
+      }
+    ],
+    "package": "aoi.js",
+    "documentation": "https://aoi.js.org/docs/functions/userstatus",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/userStatus.js"
+  },
+  {
     "function": "$usersWithRole",
     "description": "$usersWithRole will return the users who have a specific role.",
     "usage": "$usersWithRole[roleID;guildID?;option?;sep?]",
@@ -15932,6 +15915,23 @@
     "package": "aoi.js",
     "documentation": "https://aoi.js.org/docs/functions/userswithrole",
     "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/usersWithRole.js"
+  },
+  {
+    "function": "$userTag",
+    "description": "$userTag will return a user's username and discriminator.",
+    "usage": "$userTag[userID?]",
+    "example": "This will return your username and discriminator:\n\n```javascript\nclient.command({\n    name: \"userTag\",\n    code: `\n  $userTag[$authorID]\n  `\n});\n```",
+    "table": [
+      {
+        "field": "userID?",
+        "type": "[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)",
+        "description": "The user ID.",
+        "required": "false"
+      }
+    ],
+    "package": "aoi.js",
+    "documentation": "https://aoi.js.org/docs/functions/usertag",
+    "source-code": "https://github.com/aoijs/aoi.js/tree/v6/src/functions/userTag.js"
   },
   {
     "function": "$variablesCount",
@@ -16071,7 +16071,7 @@
     ],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/addfilter",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$autoPlay",
@@ -16088,7 +16088,7 @@
     ],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/autoplay",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$clearQueue",
@@ -16098,7 +16098,7 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/clearqueue",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$getCurrentTrackDuration",
@@ -16108,7 +16108,7 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/getcurrenttrackduration",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$getFilters",
@@ -16118,7 +16118,7 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/getfilters",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$hasPlayer",
@@ -16128,7 +16128,7 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/hasplayer",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$joinVC",
@@ -16175,7 +16175,7 @@
     ],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/joinvc",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$leaveVC",
@@ -16192,7 +16192,7 @@
     ],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/leavevc",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$loopMode",
@@ -16209,7 +16209,7 @@
     ],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/loopmode",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$loopStatus",
@@ -16219,7 +16219,7 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/loopstatus",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$pauseTrack",
@@ -16229,7 +16229,17 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/pausetrack",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
+  },
+  {
+    "function": "$playerStatus",
+    "description": "$playerStatus will return the current Player Status.",
+    "usage": "$playerStatus",
+    "example": "This will return the current player status:\n\n```javascript\nclient.command({\n    name: \"playerStatus\",\n    code: `\n    $playerStatus\n  `\n});\n```",
+    "table": [],
+    "package": "aoi.music",
+    "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/playerstatus",
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$playPreviousTrack",
@@ -16239,7 +16249,7 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/playprevioustrack",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$playTrack",
@@ -16262,17 +16272,7 @@
     ],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/playtrack",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
-  },
-  {
-    "function": "$playerStatus",
-    "description": "$playerStatus will return the current Player Status.",
-    "usage": "$playerStatus",
-    "example": "This will return the current player status:\n\n```javascript\nclient.command({\n    name: \"playerStatus\",\n    code: `\n    $playerStatus\n  `\n});\n```",
-    "table": [],
-    "package": "aoi.music",
-    "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/playerstatus",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$queue",
@@ -16301,7 +16301,7 @@
     ],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/queue",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$queueLength",
@@ -16311,7 +16311,7 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/queuelength",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$removeFilter",
@@ -16328,7 +16328,7 @@
     ],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/removefilter",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$resetFilter",
@@ -16338,7 +16338,7 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/resetfilter",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$resumeTrack",
@@ -16348,7 +16348,7 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/resumetrack",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$search",
@@ -16358,7 +16358,7 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/search",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$seek",
@@ -16375,7 +16375,7 @@
     ],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/seek",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$setFilter",
@@ -16392,7 +16392,7 @@
     ],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/setfilter",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$shuffleQueue",
@@ -16402,7 +16402,7 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/shufflequeue",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$skipTo",
@@ -16419,7 +16419,7 @@
     ],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/skipto",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$skipTrack",
@@ -16429,7 +16429,7 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/skiptrack",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$songInfo",
@@ -16452,7 +16452,7 @@
     ],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/songinfo",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$stopPlayer",
@@ -16462,7 +16462,7 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/stopplayer",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$stopTrack",
@@ -16472,7 +16472,7 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/stoptrack",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$unshuffleQueue",
@@ -16482,7 +16482,7 @@
     "table": [],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/unshufflequeue",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$voicePing",
@@ -16499,7 +16499,7 @@
     ],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/voiceping",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   },
   {
     "function": "$volume",
@@ -16516,6 +16516,6 @@
     ],
     "package": "aoi.music",
     "documentation": "https://aoi.js.org/extensions/aoijs/aoimusic/music/volume",
-    "source-code": "https://github.com/aoijs/aoi.js/aoi.music"
+    "source-code": "https://github.com/aoijs/aoi.music/blob/main/src/newstruct/aoiVoice.ts#L163-L890"
   }
 ]

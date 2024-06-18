@@ -45,6 +45,14 @@ export default async function functions(req, res) {
         return res.status(400).json({ status: "400", error: "Name parameter is required" });
     }
 
+    const exactMatch = functionData.find(func => func.function.toLowerCase() === name.toLowerCase());
+    if (exactMatch) {
+        const json = JSON.stringify({ endpoint: "/functions", status: 200, data: exactMatch }, null, 2);
+        res.setHeader("Content-Type", "application/json");
+        res.end(json);
+        return;
+    }
+
     const fuseOptions = {
         keys: ["function"],
         includeScore: true,
@@ -55,7 +63,8 @@ export default async function functions(req, res) {
     const result = fuse.search(name.replace("$", ""));
 
     if (result.length === 0) {
-        return res.status(404).json({ status: "404", error: "Function not found." });
+        res.setHeader("Content-Type", "application/json");
+        return res.status(404).json({ status: 404, error: "Function not found." });
     }
 
     const json = JSON.stringify({ endpoint: "/functions", status: 200, data: result[0].item }, null, 2);

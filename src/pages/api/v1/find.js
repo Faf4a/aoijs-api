@@ -48,13 +48,14 @@ export default async function find(req, res) {
     const fuseOptions = {
         keys: ["function"],
         includeScore: true,
-        threshold: 0.85
+        threshold: 0.9
     };
 
     const fuse = new Fuse(functionData, fuseOptions);
     const results = fuse.search(name.replace("$", ""));
 
     if (results.length === 0) {
+        res.setHeader("Content-Type", "application/json");
         return res.status(404).json({ status: 404, error: "No functions found." });
     }
 
