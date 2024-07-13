@@ -1,16 +1,16 @@
 import { ImageResponse } from "@vercel/og";
 
 export const config = {
-    runtime: "experimental-edge"
+    runtime: "edge"
 };
 
-const font = fetch(new URL("../../../assets/Poppins-Regular.ttf", import.meta.url)).then((res) => res.arrayBuffer());
-const fontbold = fetch(new URL("../../../assets/Poppins-SemiBold.ttf", import.meta.url)).then((res) => res.arrayBuffer());
+const font = fetch(new URL("../../assets/Whitney.ttf", import.meta.url)).then((res) => res.arrayBuffer());
+const fontHeader = fetch(new URL("../../assets/Ginto-Nord.ttf", import.meta.url)).then((res) => res.arrayBuffer());
 
 const calculateFontSize = (description) => {
     const baseSize = 32;
     const characterLimit = 50;
-    const reductionPerCharacter = 0.1;
+    const reductionPerCharacter = 0.2;
 
     if (description.length > characterLimit) {
         return baseSize - (description.length - characterLimit) * reductionPerCharacter;
@@ -61,7 +61,7 @@ const calculateFontSize = (description) => {
  */
 export default async function generate(req, res) {
     const inter = await font;
-    const interbold = await fontbold;
+    const interbold = await fontHeader;
 
     const { searchParams } = new URL(req.url);
 
@@ -138,9 +138,9 @@ export default async function generate(req, res) {
                     <div
                         style={{
                             display: "flex",
-                            fontSize: 60,
+                            fontSize: title.length > 20 ? calculateFontSize(title) : 60,
                             fontStyle: "normal",
-                            padding: "0px 15px",
+                            padding: title.length > 20 ? "10px 15px" : "15px",
                             borderRadius: "10px",
                             fontFamily: "'interbold'",
                             color: "white",
@@ -192,7 +192,8 @@ export default async function generate(req, res) {
                                     marginTop: "8px",
                                     marginBottom: "12.5px",
                                     fontStyle: "normal",
-                                    color: "lightgray"
+                                    color: "lightgray",
+                                    fontFamily: "'inter'"
                                 }}
                             >
                                 <p style={{ margin: "3px 0", lineHeight: "1" }}>Akarui</p>
@@ -210,12 +211,12 @@ export default async function generate(req, res) {
                 {
                     name: "inter",
                     data: inter,
-                    style: "normal"
+                    style: "bold"
                 },
                 {
                     name: "interbold",
                     data: interbold,
-                    style: "bold"
+                    style: "normal"
                 }
             ]
         }
