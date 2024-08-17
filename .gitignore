@@ -17,6 +17,8 @@
 
 # production
 /build
+/docs
+/convert.js
 
 # misc
 .DS_Store
