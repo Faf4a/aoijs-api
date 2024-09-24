@@ -28,18 +28,18 @@ export default async function generate(req, res) {
     return new ImageResponse(
         (
             <div
-                style={{
-                    height: "100%",
-                    width: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-start",
-                    alignItems: "flex-start",
-                    backgroundColor: "#100c08",
-                    position: "relative",
-                    overflow: "hidden",
-                    padding: "190px 40px 0 40px"
-                }}
+            style={{
+                height: "100%",
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center", // Center vertically
+                alignItems: "flex-start", // Align to the left horizontally
+                backgroundColor: "#100c08",
+                position: "relative",
+                overflow: "hidden",
+                padding: "40px 40px 0 40px"
+            }}
             >
                 <div
                     style={{
@@ -74,7 +74,7 @@ export default async function generate(req, res) {
                         textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)",
                         marginBottom: "20px",
                         lineHeight: "1.2",
-                        maxWidth: "1000px",
+                        maxWidth: "1800px",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         whiteSpace: "nowrap"
@@ -90,7 +90,7 @@ export default async function generate(req, res) {
                         color: "#ffffff",
                         textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)",
                         textAlign: "left",
-                        maxWidth: "800px",
+                        maxWidth: "1400px",
                         marginBottom: "40px",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
