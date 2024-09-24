@@ -11,12 +11,14 @@ const calculateFontSize = (description) => {
     const baseSize = 32;
     const characterLimit = 50;
     const reductionPerCharacter = 0.2;
+
     if (description.length > characterLimit) {
         return baseSize - (description.length - characterLimit) * reductionPerCharacter;
     } else {
         return baseSize;
     }
 };
+
 /**
  * @swagger
  * /api/v1/generate:
@@ -74,7 +76,9 @@ export default async function generate(req, res) {
     // ?replace=<boolean>
     const hasReplace = searchParams.has("replace");
     const replace = hasReplace ? searchParams.get("replace") == "true" : true;
+
     description = hasDescription ? searchParams.get("description")?.slice(0, 200) : "Create powerful Discord Bots fast, easy.";
+
     if (replace) {
         const words = description.split(" ");
         if (words.length > 2 && words[1] === "will") {
@@ -107,6 +111,8 @@ export default async function generate(req, res) {
 
     return new ImageResponse(
         (
+            <div
+                style={{
                     height: "100%",
                     width: "100%",
                     display: "flex",
@@ -190,7 +196,8 @@ export default async function generate(req, res) {
                                     fontFamily: "'inter'"
                                 }}
                             >
-                                <p style={{ margin: "3px 0", lineHeight: "1" }}>@aoijs/aoi.js</p>
+                                <p style={{ margin: "3px 0", lineHeight: "1" }}>Akarui</p>
+                                <p style={{ margin: "3px 0", lineHeight: "1" }}>Development</p>
                             </div>
                         </div>
                     </div>
