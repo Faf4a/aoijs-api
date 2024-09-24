@@ -16,7 +16,7 @@ export default async function generate(req, res) {
     const title = searchParams.get("title") || "Create Discord Bots with Ease";
     let description = searchParams.get("description") || "The easiest way to create Discord Bots with the power of Discord.js";
     
-    const regex = new RegExp(`\\b${title}\\s+(\\w+)`, 'i');
+    const regex = new RegExp(`\\b${title}(?:\\s+will)?\\s+(\\w+)`, 'i');
     description = description.replace(regex, (match, word) => {
         return `${word.charAt(0).toUpperCase() + word.slice(1)}s`;
     });
