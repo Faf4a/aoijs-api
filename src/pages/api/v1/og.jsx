@@ -7,107 +7,24 @@ export const config = {
 const font = fetch(new URL("../../assets/Whitney.ttf", import.meta.url)).then((res) => res.arrayBuffer());
 const fontHeader = fetch(new URL("../../assets/Ginto-Nord.ttf", import.meta.url)).then((res) => res.arrayBuffer());
 
-const calculateFontSize = (description) => {
-    const baseSize = 32;
-    const characterLimit = 50;
-    const reductionPerCharacter = 0.2;
-
-    if (description.length > characterLimit) {
-        return baseSize - (description.length - characterLimit) * reductionPerCharacter;
-    } else {
-        return baseSize;
-    }
-};
-
-/**
- * @swagger
- * /api/v1/generate:
- *   get:
- *     summary: Generate an image with custom text and styling
- *     parameters:
- *       - in: query
- *         name: title
- *         schema:
- *           type: string
- *         description: The title text to display on the image
- *       - in: query
- *         name: description
- *         schema:
- *           type: string
- *         description: The description text to display on the image
- *       - in: query
- *         name: replace
- *         schema:
- *           type: boolean
- *         description: Whether to replace certain words in the description
- *       - in: query
- *         name: gradient
- *         schema:
- *           type: string
- *         description: The color gradient to use for the title text
- *       - in: query
- *         name: logo
- *         schema:
- *           type: boolean
- *         description: Whether to display the logo on the image
- *     responses:
- *       200:
- *         description: The generated image
- *         content:
- *           image/png:
- *             schema:
- *               type: string
- *               format: binary
- */
 export default async function generate(req, res) {
     const inter = await font;
     const interbold = await fontHeader;
 
     const { searchParams } = new URL(req.url);
 
-    // ?title=<title>
-    const hasTitle = searchParams.has("title");
-    const title = hasTitle ? searchParams.get("title")?.slice(0, 100) : "aoi.js Documentation";
+    const title = searchParams.get("title") || "Create Discord Bots with Ease";
+    let description = searchParams.get("description") || "The easiest way to create Discord Bots with the power of Discord.js";
 
-    // ?description=<description>
-    const hasDescription = searchParams.has("description");
-    let description = hasDescription ? searchParams.get("description")?.slice(0, 200) : "Create powerful Discord Bots fast, easy.";
+    description = description.replace(title, "");
 
-    // ?replace=<boolean>
-    const hasReplace = searchParams.has("replace");
-    const replace = hasReplace ? searchParams.get("replace") == "true" : true;
+    description = description.replace(/\bwill\s+(\w+)/i, (match, word) => {
+        return `${word.charAt(0).toUpperCase() + word.slice(1)}s`;
+    });
 
-    description = hasDescription ? searchParams.get("description")?.slice(0, 200) : "Create powerful Discord Bots fast, easy.";
+    const npmPackage = searchParams.get("package") || "aoi.js";
 
-    if (replace) {
-        const words = description.split(" ");
-        if (words.length > 2 && words[1] === "will") {
-            words[2] = words[2][0].toUpperCase() + words[2].slice(1) + "s";
-            words.splice(0, 2);
-            description = words.join(" ");
-        }
-    }
-
-    // ?gradient=<color>
-    let gradient;
-    switch (searchParams.get("gradient")) {
-        case "green":
-            gradient = "linear-gradient(90deg, rgb(0, 200, 0), rgb(150, 200, 0))";
-            break;
-        case "red":
-            gradient = "linear-gradient(90deg, rgb(200, 0, 0), rgb(200, 100, 0))";
-            break;
-        case "yellow":
-            gradient = "linear-gradient(90deg, rgb(200, 200, 0), rgb(200, 200, 150))";
-            break;
-        default:
-            gradient = "linear-gradient(90deg, rgb(0, 124, 240), rgb(0, 223, 216))";
-            break;
-    }
-
-    // ?logo=<boolean>
-    const hasLogo = searchParams.has("logo");
-    const logo = hasLogo ? searchParams.get("logo") == "true" : true;
+    const titleFontSize = title.length > 15 ? "45px" : "60px";
 
     return new ImageResponse(
         (
@@ -116,92 +33,75 @@ export default async function generate(req, res) {
                     height: "100%",
                     width: "100%",
                     display: "flex",
-                    textAlign: "center",
-                    position: "relative"
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start",
+                    backgroundColor: "#100c08",
+                    position: "relative",
+                    overflow: "hidden",
+                    padding: "190px 40px 0 40px"
                 }}
             >
                 <div
                     style={{
-                        height: "100%",
-                        width: "100%",
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: "radial-gradient(circle at center, rgba(118, 222, 255, 0.5), transparent 70%)",
+                        opacity: 0.5
+                    }}
+                />
+
+                <div
+                    style={{
+                        fontSize: "28px",
+                        fontFamily: "'inter'",
                         display: "flex",
-                        textAlign: "center",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flexDirection: "column",
-                        flexWrap: "nowrap",
-                        backgroundColor: "#000000",
-                        backgroundImage: "radial-gradient(circle at 25px 25px, #242424 2%, transparent 0%), radial-gradient(circle at 75px 75px, #242424 2%, transparent 0%)",
-                        backgroundSize: "100px 100px"
+                        color: "#A9A9A9",
+                        textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)",
+                        marginBottom: "10px"
                     }}
                 >
-                    <div
-                        style={{
-                            display: "flex",
-                            fontSize: title.length > 20 ? calculateFontSize(title) : 60,
-                            fontStyle: "normal",
-                            padding: title.length > 20 ? "10px 15px" : "15px",
-                            borderRadius: "10px",
-                            fontFamily: "'interbold'",
-                            color: "white",
-                            marginBottom: 20,
-                            lineHeight: 1.4,
-                            whiteSpace: "pre-wrap",
-                            backgroundImage: gradient
-                        }}
-                    >
-                        {title}
-                    </div>
-                    <div
-                        style={{
-                            display: "flex",
-                            fontSize: calculateFontSize(description),
-                            fontStyle: "normal",
-                            fontFamily: "'inter'",
-                            color: "lightgray",
-                            lineHeight: 1.3,
-                            whiteSpace: "pre-wrap"
-                        }}
-                    >
-                        {description}
-                    </div>
+                    @aoijs/{npmPackage}
                 </div>
-                {logo && (
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            position: "absolute",
-                            bottom: "7px",
-                            left: "15px"
-                        }}
-                    >
-                        <div
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                marginBottom: "5px",
-                                opacity: 0.4
-                            }}
-                        >
-                            <div
-                                style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    marginLeft: "4px",
-                                    marginTop: "8px",
-                                    marginBottom: "12.5px",
-                                    fontStyle: "normal",
-                                    color: "lightgray",
-                                    fontFamily: "'inter'"
-                                }}
-                            >
-                                <p style={{ margin: "3px 0", lineHeight: "1" }}>Akarui</p>
-                                <p style={{ margin: "3px 0", lineHeight: "1" }}>Development</p>
-                            </div>
-                        </div>
-                    </div>
-                )}
+
+                <div
+                    style={{
+                        fontSize: titleFontSize,
+                        fontFamily: "'interbold'",
+                        color: "#ffffff",
+                        textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)",
+                        marginBottom: "20px",
+                        lineHeight: "1.2",
+                        maxWidth: "1000px",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap"
+                    }}
+                >
+                    {title}
+                </div>
+
+                <div
+                    style={{
+                        fontSize: "28px",
+                        fontFamily: "'inter'",
+                        color: "#ffffff",
+                        textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)",
+                        textAlign: "left",
+                        maxWidth: "800px",
+                        marginBottom: "40px",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2
+                    }}
+                >
+                    {description}
+                </div>
             </div>
         ),
         {
@@ -211,7 +111,7 @@ export default async function generate(req, res) {
                 {
                     name: "inter",
                     data: inter,
-                    style: "bold"
+                    style: "normal"
                 },
                 {
                     name: "interbold",
