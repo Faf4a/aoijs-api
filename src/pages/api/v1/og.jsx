@@ -24,7 +24,7 @@ export default async function generate(req, res) {
 
     const npmPackage = searchParams.get("package") || "aoi.js";
 
-    const titleFontSize = title.length > 15 ? "45px" : "60px";
+    const titleFontSize = title.length > 15 ? "80px" : "95px";
 
     return new ImageResponse(
         (
@@ -56,7 +56,7 @@ export default async function generate(req, res) {
 
                 <div
                     style={{
-                        fontSize: "28px",
+                        fontSize: "35px",
                         fontFamily: "'inter'",
                         display: "flex",
                         color: "#A9A9A9",
@@ -86,7 +86,7 @@ export default async function generate(req, res) {
 
                 <div
                     style={{
-                        fontSize: "28px",
+                        fontSize: "45px",
                         fontFamily: "'inter'",
                         color: "#ffffff",
                         textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)",
@@ -105,8 +105,8 @@ export default async function generate(req, res) {
             </div>
         ),
         {
-            width: 1200,
-            height: 630,
+            width: 1920,
+            height: 1080,
             fonts: [
                 {
                     name: "inter",
