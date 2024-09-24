@@ -1,3 +1,9 @@
+import { ImageResponse } from "@vercel/og";
+
+export const config = {
+    runtime: "edge"
+};
+
 const font = fetch(new URL("../../assets/Whitney.ttf", import.meta.url)).then((res) => res.arrayBuffer());
 const fontHeader = fetch(new URL("../../assets/Ginto-Nord.ttf", import.meta.url)).then((res) => res.arrayBuffer());
 
