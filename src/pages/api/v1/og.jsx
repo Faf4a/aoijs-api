@@ -15,16 +15,15 @@ export default async function generate(req, res) {
 
     const title = searchParams.get("title") || "Create Discord Bots with Ease";
     let description = searchParams.get("description") || "The easiest way to create Discord Bots with the power of Discord.js";
-
-    description = description.replace(title, "");
-
-    description = description.replace(/\bwill\s+(\w+)/i, (match, word) => {
+    
+    const regex = new RegExp(`\\b${title}\\s+(\\w+)`, 'i');
+    description = description.replace(regex, (match, word) => {
         return `${word.charAt(0).toUpperCase() + word.slice(1)}s`;
     });
 
     const npmPackage = searchParams.get("package") || "aoi.js";
 
-    const titleFontSize = title.length > 15 ? "80px" : "95px";
+    const titleFontSize = title.length > 15 ? "100px" : "150px";
 
     return new ImageResponse(
         (
@@ -56,7 +55,7 @@ export default async function generate(req, res) {
 
                 <div
                     style={{
-                        fontSize: "35px",
+                        fontSize: "45px",
                         fontFamily: "'inter'",
                         display: "flex",
                         color: "#A9A9A9",
@@ -86,7 +85,7 @@ export default async function generate(req, res) {
 
                 <div
                     style={{
-                        fontSize: "45px",
+                        fontSize: "60px",
                         fontFamily: "'inter'",
                         color: "#ffffff",
                         textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)",
