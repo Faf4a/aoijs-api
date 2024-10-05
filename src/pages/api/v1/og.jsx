@@ -8,9 +8,9 @@ const font = fetch(new URL("../../assets/Whitney.ttf", import.meta.url)).then((r
 const fontHeader = fetch(new URL("../../assets/Ginto-Nord.ttf", import.meta.url)).then((res) => res.arrayBuffer());
 
 const calculateFontSize = (description) => {
-    const baseSize = 32;
-    const characterLimit = 50;
-    const reductionPerCharacter = 0.2;
+    const baseSize = 42;
+    const characterLimit = 65;
+    const reductionPerCharacter = 0.02;
 
     if (description.length > characterLimit) {
         return baseSize - (description.length - characterLimit) * reductionPerCharacter;
@@ -160,7 +160,8 @@ export default async function generate(req, res) {
                             fontFamily: "'inter'",
                             color: "lightgray",
                             lineHeight: 1.3,
-                            whiteSpace: "pre-wrap"
+                            whiteSpace: "pre-wrap",
+                            overflow: "hidden",
                         }}
                     >
                         {decodeURIComponent(description)}
