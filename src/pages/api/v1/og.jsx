@@ -150,7 +150,7 @@ export default async function generate(req, res) {
                             backgroundImage: gradient
                         }}
                     >
-                        {title}
+                        {decodeURIComponent(title)}
                     </div>
                     <div
                         style={{
@@ -163,7 +163,7 @@ export default async function generate(req, res) {
                             whiteSpace: "pre-wrap"
                         }}
                     >
-                        {description}
+                        {decodeURIComponent(description)}
                     </div>
                 </div>
                 {logo && (
