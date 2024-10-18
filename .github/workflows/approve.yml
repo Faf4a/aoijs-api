@@ -42,20 +42,6 @@ jobs:
         run: |
           gh pr review ${{ github.event.pull_request.number }} --approve
 
-      - name: Wait for status checks to complete
-        if: steps.check_user.outputs.is_aoijsbot == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          while true; do
-            STATUS=$(gh pr view ${{ github.event.pull_request.number }} --json statusCheckRollup --jq '.statusCheckRollup[0].state')
-            echo "Current status: $STATUS"
-            if [[ "$STATUS" == "SUCCESS" ]]; then
-              break
-            fi
-            sleep 5
-          done
-
       - name: Merge the pull request
         if: steps.check_user.outputs.is_aoijsbot == 'true'
         env:
