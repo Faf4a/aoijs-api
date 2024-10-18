@@ -1,0 +1,69 @@
+name: Auto Approve and Merge
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  auto-approve-and-merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Check if the PR is opened by aoijsbot
+        id: check_user
+        run: |
+          if [ "${{ github.actor }}" == "aoijsbot" ]; then
+            echo "Is opened by aoijsbot."
+            echo "true" > is_aoijsbot.txt
+          else
+            echo "Not opened by aoijsbot, skipping."
+            echo "false" > is_aoijsbot.txt
+          fi
+        continue-on-error: true
+
+      - name: Notify Discord about PR opened
+        if: steps.check_user.outputs.is_aoijsbot == 'true'
+        run: |
+          curl -X POST \
+          -H "Content-Type: application/json" \
+          -d "{\"content\": \"A pull request was opened by ${GITHUB_ACTOR}.\"}" \
+          ${{ secrets.DISCORD_TOKEN }}
+
+      - name: Wait for all checks to pass
+        id: wait_for_checks
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          CHECKS=$(gh pr checks $PR_NUMBER --json conclusion --jq '.checkSuites.nodes[].conclusion')
+          if echo "$CHECKS" | grep -qv "SUCCESS"; then
+            echo "Not all checks have passed."
+            exit 1
+          fi
+
+      - name: Approve the pull request
+        if: steps.check_user.outputs.is_aoijsbot == 'true' && steps.wait_for_checks.outcome == 'success'
+        run: |
+          gh pr review ${{ github.event.pull_request.number }} --approve
+
+      - name: Merge the pull request
+        if: steps.check_user.outputs.is_aoijsbot == 'true' && steps.wait_for_checks.outcome == 'success'
+        run: |
+          gh pr merge ${{ github.event.pull_request.number }} --squash --admin
+
+      - name: Notify Discord about success
+        if: steps.check_user.outputs.is_aoijsbot == 'true' && steps.wait_for_checks.outcome == 'success'
+        run: |
+          curl -X POST \
+          -H "Content-Type: application/json" \
+          -d "{\"content\": \"Pull request #${{ github.event.pull_request.number }} by aoijsbot has been successfully approved and merged.\"}" \
+          ${{ secrets.DISCORD_TOKEN }}
+
+      - name: Notify Discord about failure
+        if: steps.check_user.outputs.is_aoijsbot == 'true' && failure()
+        run: |
+          curl -X POST \
+          -H "Content-Type: application/json" \
+          -d "{\"content\": \"Pull request #${{ github.event.pull_request.number }} by aoijsbot failed to be approved or merged.\"}" \
+          ${{ secrets.DISCORD_TOKEN }}
