@@ -38,7 +38,14 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Set the GH_TOKEN environment variable
         run: |
           PR_NUMBER=${{ github.event.pull_request.number }}
-          CHECKS=$(gh pr checks $PR_NUMBER --json conclusion --jq '.checkSuites.nodes[].conclusion')
+          while :; do
+            CHECKS=$(gh pr checks $PR_NUMBER --json state --jq '.checkSuites.nodes[].state')
+            if ! echo "$CHECKS" | grep -q "QUEUED\|IN_PROGRESS"; then
+              break
+            fi
+            echo "Waiting for checks to complete..."
+            sleep 60
+          done
           if echo "$CHECKS" | grep -qv "SUCCESS"; then
             echo "Not all checks have passed."
             exit 1
