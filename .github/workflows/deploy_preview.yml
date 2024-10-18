@@ -18,6 +18,7 @@ on:
 
 jobs:
   deploy-preview:
+    if: github.actor != 'aoijsbot'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
