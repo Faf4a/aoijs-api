@@ -32,7 +32,7 @@ jobs:
         run: |
           curl -X POST \
           -H "Content-Type: application/json" \
-          -d "{\"content\": \"A pull request was opened by ${GITHUB_ACTOR}.\"}" \
+          -d "{\"content\": \"found docs changes, pulling\"}" \
           ${{ secrets.DISCORD_TOKEN }}
 
       - name: Sleep
@@ -60,7 +60,7 @@ jobs:
         run: |
           curl -X POST \
           -H "Content-Type: application/json" \
-          -d "{\"content\": \"Pull request #${{ github.event.pull_request.number }} by aoijsbot has been successfully approved and merged.\"}" \
+          -d "{\"content\": \"doc changes pulled\"}" \
           ${{ secrets.DISCORD_TOKEN }}
 
       - name: Notify Discord about failure
@@ -68,5 +68,5 @@ jobs:
         run: |
           curl -X POST \
           -H "Content-Type: application/json" \
-          -d "{\"content\": \"Pull request #${{ github.event.pull_request.number }} by aoijsbot failed to be approved or merged.\"}" \
+          -d "{\"content\": \"failed to pull changes #${{ github.event.pull_request.number }}\"}" \
           ${{ secrets.DISCORD_TOKEN }}
