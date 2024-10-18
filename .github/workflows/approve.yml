@@ -8,8 +8,6 @@ on:
 jobs:
   auto-approve-and-merge:
     runs-on: ubuntu-latest
-    permissions:
-      checks: read
     outputs:
       is_aoijsbot: ${{ steps.check_user.outputs.is_aoijsbot }}
 
@@ -41,7 +39,6 @@ jobs:
         uses: poseidon/wait-for-status-checks@v0.4.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-
 
       - name: Approve the pull request
         if: steps.check_user.outputs.is_aoijsbot == 'true'
