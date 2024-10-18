@@ -8,6 +8,8 @@ on:
 jobs:
   auto-approve-and-merge:
     runs-on: ubuntu-latest
+    outputs:
+      is_aoijsbot: ${{ steps.check_user.outputs.is_aoijsbot }}
 
     steps:
       - name: Checkout code
@@ -18,12 +20,13 @@ jobs:
         run: |
           if [ "${{ github.actor }}" == "aoijsbot" ]; then
             echo "Is opened by aoijsbot."
-            echo "true" > is_aoijsbot.txt
+            echo "::set-output name=is_aoijsbot::true"
           else
             echo "Not opened by aoijsbot, skipping."
-            echo "false" > is_aoijsbot.txt
+            echo "::set-output name=is_aoijsbot::false"
           fi
         continue-on-error: true
+
 
       - name: Notify Discord about PR opened
         if: steps.check_user.outputs.is_aoijsbot == 'true'
