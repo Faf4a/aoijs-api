@@ -35,6 +35,12 @@ jobs:
           -d "{\"content\": \"A pull request was opened by ${GITHUB_ACTOR}.\"}" \
           ${{ secrets.DISCORD_TOKEN }}
 
+      - name: Sleep
+        if: steps.check_user.outputs.is_aoijsbot == 'true'
+        run: |
+          echo "Waiting 30 seconds for check to complete"
+          sleep 30
+
       - name: GitHub Checks
         uses: poseidon/wait-for-status-checks@v0.4.1
         with:
