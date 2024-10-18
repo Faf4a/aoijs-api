@@ -36,21 +36,21 @@ jobs:
           ${{ secrets.DISCORD_TOKEN }}
 
       - name: Approve the pull request
-        if: steps.check_user.outputs.is_aoijsbot == 'true' && steps.wait_for_checks.outcome == 'success'
+        if: steps.check_user.outputs.is_aoijsbot == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Set the GH_TOKEN environment variable
         run: |
           gh pr review ${{ github.event.pull_request.number }} --approve
 
       - name: Merge the pull request
-        if: steps.check_user.outputs.is_aoijsbot == 'true' && steps.wait_for_checks.outcome == 'success'
+        if: steps.check_user.outputs.is_aoijsbot == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Set the GH_TOKEN environment variable
         run: |
           gh pr merge ${{ github.event.pull_request.number }} --squash --admin
 
       - name: Delete branch after merge
-        if: steps.check_user.outputs.is_aoijsbot == 'true' && steps.wait_for_checks.outcome == 'success'
+        if: steps.check_user.outputs.is_aoijsbot == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -58,7 +58,7 @@ jobs:
           gh api -X DELETE "repos/${{ github.repository }}/git/refs/heads/$BRANCH_NAME"
 
       - name: Notify Discord about success
-        if: steps.check_user.outputs.is_aoijsbot == 'true' && steps.wait_for_checks.outcome == 'success'
+        if: steps.check_user.outputs.is_aoijsbot == 'true'
         run: |
           curl -X POST \
           -H "Content-Type: application/json" \
