@@ -32,18 +32,6 @@ jobs:
           -d "{\"content\": \"A pull request was opened by ${GITHUB_ACTOR}.\"}" \
           ${{ secrets.DISCORD_TOKEN }}
 
-      - name: Wait for all checks to pass
-        id: wait_for_checks
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Set the GH_TOKEN environment variable
-        run: |
-          PR_NUMBER=${{ github.event.pull_request.number }}
-          CHECKS=$(gh pr checks $PR_NUMBER --json conclusion --jq '.checkSuites.nodes[].conclusion')
-          if echo "$CHECKS" | grep -qv "SUCCESS"; then
-            echo "Not all checks have passed."
-            exit 1
-          fi
-
       - name: Approve the pull request
         if: steps.check_user.outputs.is_aoijsbot == 'true' && steps.wait_for_checks.outcome == 'success'
         env:
