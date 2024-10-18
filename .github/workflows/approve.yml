@@ -38,13 +38,8 @@ jobs:
       - name: Sleep
         if: steps.check_user.outputs.is_aoijsbot == 'true'
         run: |
-          echo "Waiting 18 seconds for check to complete"
-          sleep 18
-
-      - name: GitHub Checks
-        uses: poseidon/wait-for-status-checks@v0.4.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          echo "Waiting 35 seconds for check to complete"
+          sleep 35
 
       - name: Approve the pull request
         if: steps.check_user.outputs.is_aoijsbot == 'true'
