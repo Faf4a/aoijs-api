@@ -57,6 +57,16 @@ jobs:
         run: |
           gh pr merge ${{ github.event.pull_request.number }} --squash --admin
 
+      - name: Delete branch after merge
+        if: steps.check_user.outputs.is_aoijsbot == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
+          REPO="${{ github.repository }}"
+          echo "Deleting branch ${BRANCH_NAME} from ${REPO}..."
+          gh api -X DELETE /repos/${REPO}/git/refs/heads/${BRANCH_NAME}
+
       - name: Notify Discord about success
         if: steps.check_user.outputs.is_aoijsbot == 'true'
         run: |
@@ -64,7 +74,7 @@ jobs:
           PR_LINK="${{ github.event.pull_request.html_url }}"
           curl -X POST \
           -H "Content-Type: application/json" \
-          -d "{\"content\": \"Successfully merged [${PR_TITLE}](${PR_LINK}).\"}" \
+          -d "{\"content\": \"Successfully merged and deleted branch for [${PR_TITLE}](${PR_LINK}).\"}" \
           ${{ secrets.DISCORD_TOKEN }}
 
       - name: Notify Discord about failure
