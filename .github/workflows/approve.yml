@@ -30,9 +30,11 @@ jobs:
       - name: Notify Discord about PR opened
         if: steps.check_user.outputs.is_aoijsbot == 'true'
         run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_LINK="${{ github.event.pull_request.html_url }}"
           curl -X POST \
           -H "Content-Type: application/json" \
-          -d "{\"content\": \"found docs changes, pulling\"}" \
+          -d "{\"content\": \"Found docs changes in [${PR_TITLE}](${PR_LINK}), pulling changes.\"}" \
           ${{ secrets.DISCORD_TOKEN }}
 
       - name: Sleep
@@ -58,15 +60,19 @@ jobs:
       - name: Notify Discord about success
         if: steps.check_user.outputs.is_aoijsbot == 'true'
         run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_LINK="${{ github.event.pull_request.html_url }}"
           curl -X POST \
           -H "Content-Type: application/json" \
-          -d "{\"content\": \"doc changes pulled\"}" \
+          -d "{\"content\": \"Successfully merged [${PR_TITLE}](${PR_LINK}).\"}" \
           ${{ secrets.DISCORD_TOKEN }}
 
       - name: Notify Discord about failure
         if: steps.check_user.outputs.is_aoijsbot == 'true' && failure()
         run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_LINK="${{ github.event.pull_request.html_url }}"
           curl -X POST \
           -H "Content-Type: application/json" \
-          -d "{\"content\": \"failed to pull changes #${{ github.event.pull_request.number }}\"}" \
+          -d "{\"content\": \"Failed to merge changes in [${PR_TITLE}](${PR_LINK}).\"}" \
           ${{ secrets.DISCORD_TOKEN }}
