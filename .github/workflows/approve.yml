@@ -74,7 +74,7 @@ jobs:
           PR_LINK="${{ github.event.pull_request.html_url }}"
           curl -X POST \
           -H "Content-Type: application/json" \
-          -d "{\"content\": \"Successfully merged and deleted branch for [${PR_TITLE}](${PR_LINK}).\"}" \
+          -d "{\"content\": \"Successfully merged and deleted branch for [${PR_TITLE}](<${PR_LINK}>).\"}" \
           ${{ secrets.DISCORD_TOKEN }}
 
       - name: Notify Discord about failure
@@ -84,5 +84,5 @@ jobs:
           PR_LINK="${{ github.event.pull_request.html_url }}"
           curl -X POST \
           -H "Content-Type: application/json" \
-          -d "{\"content\": \"Failed to merge changes in [${PR_TITLE}](${PR_LINK}).\"}" \
+          -d "{\"content\": \"Failed to merge changes in [${PR_TITLE}](<${PR_LINK}>).\"}" \
           ${{ secrets.DISCORD_TOKEN }}
